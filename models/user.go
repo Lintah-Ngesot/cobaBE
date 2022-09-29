@@ -11,7 +11,8 @@ type User struct {
 	Phone    string `json:"phone" gorm:"type: varchar(255)"`
 	Address  string `json:"address" gorm:"type: varchar(255)"`
 
-	Profile ProfileResponse `json:"profile"`
+	// Profile ProfileResponse `json:"profile"`
+	// Literaturs LiteraturUserResponse `json:"literatur"`
 
 	Literaturs []LiteraturUserResponse `json:"literatur"`
 	CreatedAt  time.Time               `json:"-"`

@@ -41,8 +41,8 @@ func (h *handlerProfile) GetProfile(w http.ResponseWriter, r *http.Request) {
 
 func convertResponseProfile(u models.Profile) profiledto.ProfileResponse {
 	return profiledto.ProfileResponse{
-		ID:      u.ID,
-		UserID:  u.UserID,
+		ID: u.ID,
+		// UserID:  u.UserID,
 		Phone:   u.Phone,
 		Gender:  u.Gender,
 		Address: u.Address,

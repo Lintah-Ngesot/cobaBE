@@ -6,5 +6,5 @@ type LiteraturRequest struct {
 	Pages           string `json:"pages" form:"pages" gorm:"type: varchar(255)" validate:"required"`
 	ISBN            string `json:"isbn" form:"isbn" gorm:"type: varchar(255)" validate:"required"`
 	Author          string `json:"author" form:"author" gorm:"type: varchar(255)" validate:"required"`
-	Image           string `json:"image" form:"image" gorm:"type: varchar(255)"`
+	Attache         string `json:"attache" form:"attache" gorm:"type: varchar(255)"`
 }

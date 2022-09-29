@@ -40,7 +40,7 @@ func (h *handlerLiteratur) FindLiteraturs(w http.ResponseWriter, r *http.Request
 
 	// Create Embed Path File on Image property here ...
 	for i, p := range literaturs {
-		literaturs[i].Image = os.Getenv("PATH_FILE") + p.Image
+		literaturs[i].Attache = os.Getenv("PATH_FILE") + p.Attache
 	}
 
 	w.WriteHeader(http.StatusOK)
@@ -63,7 +63,7 @@ func (h *handlerLiteratur) GetLiteratur(w http.ResponseWriter, r *http.Request) 
 	}
 
 	// Create Embed Path File on Image property here ...
-	literatur.Image = os.Getenv("PATH_FILE") + literatur.Image
+	literatur.Attache = os.Getenv("PATH_FILE") + literatur.Attache
 
 	w.WriteHeader(http.StatusOK)
 	response := dto.SuccessResult{Code: http.StatusOK, Data: convertResponseLiteratur(literatur)}
@@ -97,7 +97,7 @@ func (h *handlerLiteratur) CreateLiteratur(w http.ResponseWriter, r *http.Reques
 		Pages:           r.FormValue("pages"),
 		ISBN:            r.FormValue("isbn"),
 		Author:          r.FormValue("author"),
-		Image:           r.FormValue("image"),
+		Attache:         r.FormValue("attache"),
 	}
 
 	validation := validator.New()
@@ -118,7 +118,7 @@ func (h *handlerLiteratur) CreateLiteratur(w http.ResponseWriter, r *http.Reques
 		Pages:           request.Pages,
 		ISBN:            request.ISBN,
 		Author:          request.Author,
-		Image:           filename,
+		Attache:         filename,
 	}
 
 	literatur, err = h.LiteraturRepository.CreateLiteratur(literatur)
@@ -144,6 +144,6 @@ func convertResponseLiteratur(u models.Literatur) models.LiteraturResponse {
 		Pages:           u.PublicationDate,
 		ISBN:            u.ISBN,
 		Author:          u.Author,
-		Image:           u.Image,
+		Attache:         u.Attache,
 	}
 }

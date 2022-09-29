@@ -13,4 +13,6 @@ func ProfileRoutes(r *mux.Router) {
 	h := handlers.HandlerProfile(profileRepository)
 
 	r.HandleFunc("/profiles/{id}", h.GetProfile).Methods("GET")
+	r.HandleFunc("/profiles/{id}/literatur", h.GetProfile).Methods("GET")
+
 }

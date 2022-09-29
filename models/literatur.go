@@ -11,7 +11,7 @@ type Literatur struct {
 	Pages           string               `json:"pages" form:"pages" gorm:"type: varchar(255)"`
 	ISBN            string               `json:"isbn" form:"isbn" gorm:"type: varchar(255)"`
 	Author          string               `json:"author" form:"author" gorm:"type: varchar(255)"`
-	Image           string               `json:"image" form:"image" gorm:"type: varchar(255)"`
+	Attache         string               `json:"attache" form:"attache" gorm:"type: varchar(255)"`
 	// Category   []Category           `json:"category" gorm:"many2many:product_categories"`
 	// CategoryID []int                `json:"-" form:"category_id" gorm:"-"`
 	CreatedAt time.Time `json:"-"`
@@ -27,7 +27,7 @@ type LiteraturResponse struct {
 	Pages           string               `json:"pages"`
 	ISBN            string               `json:"isbn"`
 	Author          string               `json:"author"`
-	Image           string               `json:"image"`
+	Attache         string               `json:"attache"`
 
 	// Category   []Category           `json:"category" gorm:"many2many:product_categories"`
 	// CategoryID []int                `json:"-" form:"category_id" gorm:"-"`
@@ -41,7 +41,7 @@ type LiteraturUserResponse struct {
 	Pages           string `json:"pages"`
 	ISBN            string `json:"isbn"`
 	Author          string `json:"author"`
-	Image           string `json:"image"`
+	Attache         string `json:"attache"`
 }
 
 func (LiteraturResponse) TableName() string {
