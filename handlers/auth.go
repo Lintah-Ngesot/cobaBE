@@ -123,6 +123,7 @@ func (h *handlerAuth) Login(w http.ResponseWriter, r *http.Request) {
 	}
 
 	loginResponse := authdto.LoginResponse{
+		UserID:   user.ID,
 		FullName: user.FullName,
 		Email:    user.Email,
 		Gender:   user.Gender,
