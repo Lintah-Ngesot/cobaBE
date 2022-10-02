@@ -17,6 +17,7 @@ type User struct {
 
 	Literaturs  []LiteraturUserResponse `json:"literatur"`
 	Collections []CollectionResponse    `json:"collections"`
+	Status      string                  `json:"status"`
 	CreatedAt   time.Time               `json:"-"`
 	UpdatedAt   time.Time               `json:"-"`
 }

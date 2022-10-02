@@ -59,6 +59,7 @@ func (h *handlerAuth) Register(w http.ResponseWriter, r *http.Request) {
 		Gender:   request.Gender,
 		Phone:    request.Phone,
 		Address:  request.Address,
+		Status:   "user",
 		// Role:     "user",
 	}
 
@@ -113,6 +114,7 @@ func (h *handlerAuth) Login(w http.ResponseWriter, r *http.Request) {
 	//generate token
 	claims := jwt.MapClaims{}
 	claims["id"] = user.ID
+	claims["status"] = user.Status
 	claims["exp"] = time.Now().Add(time.Hour * 2).Unix() // 2 jam expired
 
 	token, errGenerateToken := jwtToken.GenerateToken(&claims)
@@ -129,8 +131,9 @@ func (h *handlerAuth) Login(w http.ResponseWriter, r *http.Request) {
 		Gender:   user.Gender,
 		Phone:    user.Phone,
 		Address:  user.Address,
-		Password: user.Password,
-		Token:    token,
+		Status:   user.Status,
+		// Password: user.Password,
+		Token: token,
 	}
 
 	w.Header().Set("Content-Type", "application/json")
@@ -143,6 +146,7 @@ func (h *handlerAuth) CheckAuth(w http.ResponseWriter, r *http.Request) {
 
 	userInfo := r.Context().Value("userInfo").(jwt.MapClaims)
 	userId := int(userInfo["id"].(float64))
+	// userStatus := int(userInfo["status"].(float64))
 
 	// Check User by Id
 	user, err := h.AuthRepository.Getuser(userId)
@@ -157,6 +161,7 @@ func (h *handlerAuth) CheckAuth(w http.ResponseWriter, r *http.Request) {
 		Id:       user.ID,
 		FullName: user.FullName,
 		Email:    user.Email,
+		Status:   user.Status,
 		// Role:     user.Role,
 	}
 
